@@ -7,13 +7,12 @@
     <title>Rock Paper Scissors Game</title>
     <link rel="stylesheet" href="src/css/style.css">    
 </head>
-<body>
-	<script type="text/javascript" src="src/js/lib/system.js"></script>
+<body>	
 	<section>
 		<div class="container">
 			<header class="pre2 col8">
 				<h2>Rock-Paper-Scissors</h2>
-				<p>This is a simple human vs computer rock-paper-scissors game</p>
+				<p>Its you against the computer.</p>
 			</header>
 		</div>
 	</section>
@@ -27,35 +26,21 @@
 		    </form>
 		</div>
 	</section>
-	<section id="gameplay" >
-		<div class="container">
-			<div class="col4">
-				<h3>Human</h3>
-				<form class="select-shape">
-					<input type="button" name="shape" value="Rock" />
-					<input type="button" name="shape" value="Paper" />
-					<input type="button" name="shape" value="Scissors"  />
-				</form>
-			</div>
-			<div class="col4" id="scoring-system">
-				<h3>Scores</h3>
-				<div>
-					<h4>wins</h4>
-					<span class="human-score">0</span>
-				</div>
-				<div>
-					<h4>ties</h4>
-					<span class="tie-score">0</span>
-				</div>
-				<div>
-					<h4>wins</h4>
-					<span class="computer-score">0</span>
-				</div>				
-			</div>
-			<div class="col4">
-				<h3>Computer</h3>
-			</div>
-		</div>
+	<section id="gameplay">
+		
 	</section>
+	<script type="text/javascript" src="src/js/lib/system.js"></script>
+	<script type="text/javascript">
+        System.defaultJSExtensions = true;
+        
+        System.import('src/js/GameApp').then(function(module) {
+            
+            new module.GameApp(document, [
+                {'name':'rock','beat':'scissor'},
+                {'name':'paper','beat':'rock'},
+                {'name':'scissor','beat':'paper'}
+            ]);
+        })
+    </script>
 </body>
 </html>

@@ -15,9 +15,15 @@ h3 {
 	    margin: 0 0 5px;
 	    padding: 0;
 	    font-size: 16px;
-    }
+	    &:focus{
+		    outline: none;
+		}
+    }    
 }
 #gameplay {
+	&.hide {
+		display: none;
+	}
 	.select-shape {
 		input[type="button"] {
 			border: none;
@@ -40,4 +46,9 @@ h3 {
 			color: yellow;
 		}
 	}
+}
+.destroy {
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear;
+	display: none;
 }
