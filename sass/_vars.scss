@@ -1,0 +1,49 @@
+// Colours
+$highlight:                     #fa9200;
+
+$error:                         #f00;
+$error-bg:                      #ffe5e5;
+
+$success:                       #390;
+$success-bg:                    #eaf5e5;
+
+$info:                          #39f;
+$info-bg:                       #eaf5ff;
+
+$warning:                       #ff0;
+$warning-bg:                    #ffffe5;
+
+$black:                         #000;
+$white:                         #fff;
+$text:                          #000;
+$title:                         #000;
+
+
+// Grid
+$include-grid:                  true;
+$col-qty:                       12;
+$col-width:                     60px;
+$gutter:                        20px;
+
+// Large desktop grid
+$xl-col-width:                  70px;
+$xl-gutter:                     30px;
+
+$m-max-width:                   780px;
+$s-max-width:                   540px;
+
+
+// Breakpoints
+$bp-xl:                 		1360px;
+$bp-l:              			1024px;
+$bp-m:             				680px;
+$bp-s:              			120px;
+
+
+// Paths
+$img:                           '../img/';
+
+    
+// Typography
+$body-font:                     sans-serif;
+$title-font:                    serif;
