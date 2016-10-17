@@ -1,4 +1,5 @@
 import { Shape } from './Shape';
+import {Player, PlayerType} from './Player';
 import GameService, { IGameService } from './GameService';
 
 // Main app class
@@ -9,6 +10,7 @@ export class GameApp {
 	constructor(el, shapes) {
 		this.gameService = new GameService(shapes);
 		this.initialize(el);
+		this.winningStreak = 0;
 	}
 
 	newGame(user: string) {
@@ -19,48 +21,69 @@ export class GameApp {
 		var _this = this;
 		var gameStartFormEl = el.getElementsByClassName('game-start')[0],
 			playerNameEl = el.getElementsByTagName('input')[0],
-			gamePlayEL = el.getElementById('gameplay');
-
-			console.log(gamePlayEL);
+			gamePlayEL = el.getElementById('gameplay'),
+			gamePlayFormEL = el.getElementsByClassName('select-shape')[0];
 		gameStartFormEl.addEventListener('submit', function(evnt) {
+			evnt.preventDefault();
             _this.newGame(playerNameEl.value)
             playerNameEl.value = '';
             gameStartFormEl.className += " destroy";
             _this.renderGame(gamePlayEL);
-            evnt.preventDefault();
+            
+        });
+        gamePlayEL.addEventListener('submit', function(evnt) {  
+        	evnt.preventDefault();      	
+        	var clickedEl = el.getElementsByClassName('clicked')[0];        	
+        	_this.shapeClick(clickedEl.value);
+        	_this._reset(clickedEl);
+        	_this.renderGame(gamePlayEL);
+        	
         });
 	}
 
+	_reset(el) {
+		el.className = '';
+	}
+
 	renderGame(el) {
+		var human = this.gameService.getPlayer(PlayerType.Human);
+		var computer = this.gameService.getPlayer(PlayerType.Computer);
 		el.innerHTML = `
 			<div class="container">
-			<div class="col4">
-				<h3>Human</h3>
+			<div class="col4 human">
+				<h3>${human.name}</h3>
 				<form class="select-shape">
-					<input type="button" name="shape" value="Rock" />
-					<input type="button" name="shape" value="Paper" />
-					<input type="button" name="shape" value="Scissors"  />
+					<input type="submit" name="rock" value="rock" onclick="this.className = 'clicked'"/>
+					<input type="submit" name="paper" value="paper"  onclick="this.className = 'clicked'"/>
+					<input type="submit" name="scissor" value="scissor"  onclick="this.className = 'clicked'" />
 				</form>
+				<div class="shapeFormed"></div>
 			</div>
 			<div class="col4" id="scoring-system">
 				<h3>Scores</h3>
 				<div>
 					<h4>wins</h4>
-					<span class="human-score">0</span>
-				</div>
-				<div>
-					<h4>ties</h4>
-					<span class="tie-score">0</span>
-				</div>
+					<span class="human-score">${human.points}</span>
+				</div>				
 				<div>
 					<h4>wins</h4>
-					<span class="computer-score">0</span>
+					<span class="computer-score">${computer.points}</span>
+					
 				</div>				
 			</div>
-			<div class="col4">
+			<div class="col4 computer">
 				<h3>Computer</h3>
+				<div class="shapeFormed"></div>
 			</div>
 		</div>
 		`;
+	}
+
+	shapeClick(shape) {
+		var winner = this.gameService.play(shape);
+		var el = document.getElementById("results");
+
+		if(winner) el.innerHTML =  `<div class="container">${winner.name} wins! Winning Streaks ${winner.winningStreak}</div>`;
+		else el.innerHTML = `<div class="container">It's a tie!</div>`;
 	}
 }

@@ -572,7 +572,7 @@ h3 {
 
 #scoring-system div {
   display: inline-block;
-  width: 30%;
+  width: 45%;
   text-align: center; }
   #scoring-system div h4 {
     margin: 0;
@@ -586,5 +586,14 @@ h3 {
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   display: none; }
+
+.shapeFormed {
+  display: block; }
+  .shapeFormed.rock {
+    background-image: url("../img/rock.png"); }
+  .shapeFormed.paper {
+    background-image: url("../img/paper.png"); }
+  .shapeFormed.scissor {
+    background-image: url("../img/scissor.png"); }
 
 /*# sourceMappingURL=style.css.map */
