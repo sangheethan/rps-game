@@ -561,14 +561,18 @@ h3 {
   margin: 0 0 5px;
   padding: 0;
   font-size: 16px; }
+  #gamestart input[type="text"]:focus, #gamestart input[type="text"] + input:focus {
+    outline: none; }
 
+#gameplay.hide {
+  display: none; }
 #gameplay .select-shape input[type="button"] {
   border: none;
   width: 30%; }
 
 #scoring-system div {
   display: inline-block;
-  width: 30%;
+  width: 45%;
   text-align: center; }
   #scoring-system div h4 {
     margin: 0;
@@ -577,5 +581,19 @@ h3 {
     display: block;
     background-color: black;
     color: yellow; }
+
+.destroy {
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  display: none; }
+
+.shapeFormed {
+  display: block; }
+  .shapeFormed.rock {
+    background-image: url("../img/rock.png"); }
+  .shapeFormed.paper {
+    background-image: url("../img/paper.png"); }
+  .shapeFormed.scissor {
+    background-image: url("../img/scissor.png"); }
 
 /*# sourceMappingURL=style.css.map */

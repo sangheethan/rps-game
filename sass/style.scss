@@ -15,9 +15,15 @@ h3 {
 	    margin: 0 0 5px;
 	    padding: 0;
 	    font-size: 16px;
-    }
+	    &:focus{
+		    outline: none;
+		}
+    }    
 }
 #gameplay {
+	&.hide {
+		display: none;
+	}
 	.select-shape {
 		input[type="button"] {
 			border: none;
@@ -28,7 +34,7 @@ h3 {
 #scoring-system {
 	div {
 		display: inline-block;
-		width: 30%;
+		width: 45%;
 		text-align: center;	
 		h4 {
 			margin: 0;
@@ -39,5 +45,22 @@ h3 {
 			background-color: black;
 			color: yellow;
 		}
+	}
+}
+.destroy {
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear;
+	display: none;
+}
+.shapeFormed {
+	display: block;
+	&.rock {
+		background-image: url('../img/rock.png');
+	}
+	&.paper {
+		background-image: url('../img/paper.png');	
+	}
+	&.scissor {
+		background-image: url('../img/scissor.png');
 	}
 }
