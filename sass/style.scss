@@ -1,1 +1,43 @@
 @import 'grid';
+header {
+	text-align: center;
+}
+h3 {
+	text-align: center;	
+}
+#gamestart {
+	input[type="text"], input[type="text"]+input {
+		width: 100%;
+	    display: block;
+	    border: none;
+	    height: 40px;
+	    border-bottom: 1px solid #ccc;
+	    margin: 0 0 5px;
+	    padding: 0;
+	    font-size: 16px;
+    }
+}
+#gameplay {
+	.select-shape {
+		input[type="button"] {
+			border: none;
+			width: 30%;
+		}
+	}
+}
+#scoring-system {
+	div {
+		display: inline-block;
+		width: 30%;
+		text-align: center;	
+		h4 {
+			margin: 0;
+			padding: 0;
+		}
+		span {
+			display: block;
+			background-color: black;
+			color: yellow;
+		}
+	}
+}
