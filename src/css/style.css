@@ -545,14 +545,39 @@
   .m-show-inline,
   .l-show-block,
   .l-show-inline {
-    display: none; } }
+    display: none; }
+
+  .message {
+    width: 70%; } }
+body {
+  background-color: #faf8ef; }
+
+input[type="submit"] {
+  background-color: #8f7a66;
+  color: #f9f6f2;
+  padding: 15px;
+  margin-left: 5px;
+  margin-bottom: 6px; }
+
 header {
   text-align: center; }
+  header h2 {
+    display: block;
+    text-indent: -999px;
+    line-height: 180px;
+    overflow: hidden;
+    background-image: url(../img/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    text-align: center;
+    transition: all 5s ease-in-out; }
 
 h3 {
   text-align: center; }
 
-#gamestart input[type="text"], #gamestart input[type="text"] + input {
+#gamestart input {
   width: 100%;
   display: block;
   border: none;
@@ -561,14 +586,26 @@ h3 {
   margin: 0 0 5px;
   padding: 0;
   font-size: 16px; }
-  #gamestart input[type="text"]:focus, #gamestart input[type="text"] + input:focus {
+  #gamestart input[type="text"] {
+    text-indent: 10px; }
+  #gamestart input:focus {
     outline: none; }
 
 #gameplay.hide {
   display: none; }
-#gameplay .select-shape input[type="button"] {
-  border: none;
-  width: 30%; }
+#gameplay .select-shape {
+  margin: 0 auto; }
+  #gameplay .select-shape input[type="submit"] {
+    border: none;
+    width: 90px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 15px;
+    margin: 0 1px 3 5px; }
+#gameplay .human, #gameplay .computer {
+  background-color: white;
+  height: 115px; }
 
 #scoring-system div {
   display: inline-block;
@@ -595,5 +632,76 @@ h3 {
     background-image: url("../img/paper.png"); }
   .shapeFormed.scissor {
     background-image: url("../img/scissor.png"); }
+
+#popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0; }
+  #popup.show {
+    visibility: visible;
+    opacity: initial; }
+  #popup .message {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out; }
+
+#results {
+  margin-top: 20px;
+  overflow-y: scroll; }
+  #results div {
+    text-align: center;
+    border-bottom: 3px solid #bbada0;
+    padding: 5px;
+    width: 360px;
+    margin-top: 2px;
+    color: #776E65;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 5s ease-in-out; }
+  #results span {
+    font-size: 10px;
+    margin: 0 10px;
+    background-color: #bbada0;
+    color: #776E65; }
+
+#gameplay-result {
+  margin-top: 20px; }
+  #gameplay-result .scissor {
+    background-image: url("../img/scissor.png");
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: center; }
+  #gameplay-result .paper {
+    background-image: url("../img/paper.png");
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: center; }
+  #gameplay-result .rock {
+    background-image: url("../img/rock.png");
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: center; }
 
 /*# sourceMappingURL=style.css.map */

@@ -35,6 +35,12 @@ System.register(['./Player'], function(exports_1, context_1) {
                     });
                     return shapeObj;
                 }
+                getPlayerShape(playerType) {
+                    if (playerType == Player_1.PlayerType.Human)
+                        return this.humanShape;
+                    else
+                        return this.computerShape;
+                }
                 // Initialize the players
                 initPlayers(player) {
                     var human = {
@@ -67,6 +73,7 @@ System.register(['./Player'], function(exports_1, context_1) {
                     var winner;
                     var humanShape = this.getShape(form);
                     var computerShape = this._generateShape();
+                    this.humanShape = humanShape;
                     if (humanShape.beat === computerShape.name) {
                         winner = this.getPlayer(Player_1.PlayerType.Human);
                         winner.winningStreak++;
@@ -92,10 +99,14 @@ System.register(['./Player'], function(exports_1, context_1) {
                         player.winningStreak = 0;
                     }
                 }
+                restart() {
+                    this.players.forEach(player => player.points = 0);
+                    this.loseStreak();
+                }
                 _generateShape() {
                     // pick a random shape from shapes and return the Shape
                     var randomShape = this.shapes[Math.floor(Math.random() * this.shapes.length)];
-                    document.getElementsByClassName('computer')[0].getElementsByClassName('shapeFormed')[0].className += " " + randomShape.name;
+                    this.computerShape = randomShape;
                     return randomShape;
                 }
             };

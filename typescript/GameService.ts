@@ -5,13 +5,17 @@ export interface IGameService {
 	add(shape: Shape): Shape;
 	initPlayers(player: String): void;
     getPlayer(playerType: number): void;
+    getPlayerShape(playerType): Shape;
     play(form: String): Player;
+    restart(): void;
 }
 
 export default class GameService implements IGameService {
 	
 	private shapes: Shape[] = [];
 	private players : Player[] = [];
+    private humanShape: Shape;
+    private computerShape: Shape;
 
 	constructor(shapes: string[]) {		
 		if(shapes) {
@@ -37,6 +41,11 @@ export default class GameService implements IGameService {
             }
         });
         return shapeObj;
+    }
+
+    getPlayerShape(playerType): Shape {
+        if(playerType == PlayerType.Human) return this.humanShape;
+        else return this.computerShape;
     }
 
     // Initialize the players
@@ -70,6 +79,7 @@ export default class GameService implements IGameService {
         var winner;
         var humanShape = this.getShape(form);
         var computerShape = this._generateShape();
+        this.humanShape = humanShape;
         if(humanShape.beat === computerShape.name) {
             winner = this.getPlayer(PlayerType.Human); 
             winner.winningStreak++;
@@ -91,10 +101,14 @@ export default class GameService implements IGameService {
             player.winningStreak = 0;
         }
     }
+    restart():void {
+        this.players.forEach(player => player.points = 0);
+        this.loseStreak();
+    }
     private _generateShape(): Shape {
         // pick a random shape from shapes and return the Shape
         var randomShape =  this.shapes[Math.floor(Math.random()*this.shapes.length)];
-        document.getElementsByClassName('computer')[0].getElementsByClassName('shapeFormed')[0].className += " " + randomShape.name;       
+        this.computerShape = randomShape;      
         return randomShape;
     }
 }
