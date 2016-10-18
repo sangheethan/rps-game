@@ -152,7 +152,5 @@ export class GameApp {
 			It's a tie!
 			<span>${this.gameService.getPlayerShape(PlayerType.Computer).name}</span>
 		</div>`;
-
-		
 	}
 }
