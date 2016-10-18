@@ -403,7 +403,7 @@
     float: left;
     margin: 0;
     padding: 0 5px;
-    width: 50%;
+    width: 100%;
     box-sizing: border-box; }
 
   .col2 {
@@ -557,7 +557,13 @@ input[type="submit"] {
   color: #f9f6f2;
   padding: 15px;
   margin-left: 5px;
-  margin-bottom: 6px; }
+  margin-bottom: 6px;
+  border: none;
+  cursor: pointer; }
+  input[type="submit"]:hover {
+    background-color: #222;
+    transition: background-color 0.4s ease-in-out;
+    color: #8f7a66; }
 
 header {
   text-align: center; }
@@ -597,7 +603,7 @@ h3 {
   margin: 0 auto; }
   #gameplay .select-shape input[type="submit"] {
     border: none;
-    width: 90px;
+    width: 30%;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
